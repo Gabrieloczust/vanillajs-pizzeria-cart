@@ -11,6 +11,8 @@ let cart = [];
 let modalQt = 1;
 let modalIndex = 0;
 
+let toast = qs('#toast');
+
 /* Listagem das pizzas */
 pizzaJson.map((pizza, index) => {
 
@@ -141,11 +143,21 @@ qs('.menu-openner').addEventListener('click', () => {
 });
 qs('.menu-closer').addEventListener('click', () => qs('aside').style.left = '100vh');
 
+// Finalizar compra
+qs('.cart--finalizar').addEventListener('click', () => {
+    cart = [];
+    qs('.cart').innerHTML = '';
+    qs('aside').classList.remove('show');
+    toastShow('Compra Finalizada!')
+});
+
 /* Atualiza o carrinho */
 function updateCart() {
 
     // Mobile
     qs('.menu-openner span').innerHTML = cart.length;
+
+    cart.sort((a, b) => (a.cod > b.cod) ? 1 : -1);
 
     if (cart.length > 0) {
         qs('aside').classList.add('show');
@@ -191,6 +203,7 @@ function updateCart() {
                     cart[i].qt--;
                 } else {
                     cart.splice(i, 1);
+                    toastShow(`Pizza <b>${pizzaName}</b> removida do Carrinho!`, 'danger')
                 }
                 updateCart();
             });
@@ -215,4 +228,17 @@ function updateCart() {
         qs('aside').style.left = '100vh';
     }
 
+}
+
+/* Exibe Toast */
+function toastShow(messege, type = 'success') {
+
+    toast.innerHTML = messege;
+    toast.classList.add(type)
+    toast.classList.add('show')
+
+    setTimeout(function () {
+        toast.classList.remove('show');
+        toast.classList.remove(type)
+    }, 3000);
 }
