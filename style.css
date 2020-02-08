@@ -408,15 +408,15 @@ h1 {
 
 #toast.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.6s;
+    animation: fadein 0.5s, fadeout 0.5s 2.6s;
 }
 
-#toast.success{
+#toast.success {
     background-color: #32a345;
 }
 
-#toast.danger{
+#toast.danger {
     background-color: #fb5555;
 }
 
@@ -571,4 +571,37 @@ h1 {
         width: 32px;
         font-size: 30px;
     }
+
+    #toast {
+        bottom: 0;
+        top: unset;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    @keyframes fadein {
+        from {
+            bottom: -50px;
+            opacity: 0;
+        }
+    
+        to {
+            bottom: 0;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeout {
+        from {
+            bottom: 0;
+            opacity: 1;
+        }
+    
+        to {
+            bottom: -50px;
+            opacity: 0;
+        }
+    }
+
 }

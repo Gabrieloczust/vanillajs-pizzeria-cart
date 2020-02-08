@@ -32,7 +32,7 @@ let pizzaJson = [{
     },
     {
         id: 57,
-        name: 'Sorvete',
+        name: 'Atum',
         img: 'pizza5.png',
         price: [10.19, 15.80, 40.80],
         sizes: ['320g', '530g', '860g'],

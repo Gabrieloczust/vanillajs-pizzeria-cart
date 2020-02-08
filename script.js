@@ -146,9 +146,8 @@ qs('.menu-closer').addEventListener('click', () => qs('aside').style.left = '100
 // Finalizar compra
 qs('.cart--finalizar').addEventListener('click', () => {
     cart = [];
-    qs('.cart').innerHTML = '';
-    qs('aside').classList.remove('show');
-    toastShow('Compra Finalizada!')
+    updateCart();
+    toastShow('Compra Finalizada!');
 });
 
 /* Atualiza o carrinho */
